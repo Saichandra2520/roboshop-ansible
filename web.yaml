@@ -4,24 +4,24 @@
   tasks:
   - name: install nginx
     ansible.builtin.dnf:
-      name: nginx 
+      name: nginx
       state: present
-  
+
   - name: remove html directory
     ansible.builtin.file:
       path: /usr/share/nginx/html
       state: absent
-
+  
   - name: create html directory
     ansible.builtin.file:
       path: /usr/share/nginx/html
       state: directory
-
-  - name: Download web app
+  
+  - name: Download Web App
     ansible.builtin.get_url:
       url: https://roboshop-builds.s3.amazonaws.com/web.zip
       dest: /tmp
-
+  
   - name: Extract application
     ansible.builtin.unarchive:
       src: /tmp/web.zip
